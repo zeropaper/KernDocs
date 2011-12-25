@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kern.js documentation | Roadmap</title>
+</head>
+<body>
+
+<ol class="roadmap-list">
+  <li>
+    <h4>Socket refresh</h4>
+    <div>
+      <strong>Dependencies</strong>
+	    <div class="dependencies">
+	      Content Socket Refresh, Assets Socket Refresh
+	    </div>
+    </div>
+    <div class="description">
+      Most of the code related to socket refresh was commented. It should be uncommented.
+      Part of the code should be complemented and improved.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">3h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/socket/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Content socket refresh</h4>
+    <div>
+      <strong>Dependencies</strong>
+	    <div class="dependencies">
+	      Watcher
+	    </div>
+    </div>
+    <div class="description">
+      Most of the code related to socket refresh was commented. It should be uncommented.
+      Part of the code should be complemented and improved.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">3h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/socket/, lib/contentEntry.js, lib/common/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Assets socket refresh</h4>
+    <div>
+      <strong>Dependencies</strong>
+	    <div class="dependencies">
+	      Watcher
+	    </div>
+    </div>
+    <div class="description">
+      The code for the assets refresh should be improved and extend to all kind of assets.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">3h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/socket/, lib/contentEntry.js, lib/common/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Watcher</h4>
+     <div class="description">
+      The assets and content need to be watched to provide real time actualization.
+      Of course it should be flexible.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">5h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Queue</h4>
+     <div class="description">
+      The assets and content need to be watched to provide real time actualization.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">5h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Logging</h4>
+    <div class="description">
+      That thing needs logging. Back & Frontend
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">5h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>General look and feel</h4>
+    <div class="meta">
+      Estimated time needed: <span class="etn">5h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/</span>
+    </div>
+  </li>
+  
+</ol>
+
+
+<script type="text/javascript" class="kern-script" id="kern-roadmap">
+
+</script>
+
+<script type="text/template" class="kern-template" id="kern-roadmap-list-template">
+<ol class="roadmap-list"><% _.each(items, function(item, name){ %>
+  <li id="roadmap-<%= name %>">
+    <h4><%= item.title %></h4>
+    <div>
+      <strong>Dependencies</strong>
+      <div class="dependencies">
+        <%= item.dependencies %>
+      </div>
+    </div>
+    <div class="description">
+      <%= item.description %>
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn"><%= item.etn %></span><% if (item.dependenciesEtn) { %> <span class="dependencies-etn"><%= item.dependenciesEtn %></span><% } %><br />
+      Status: <span class="status"><%= item.status %></span><br />
+      Look at: <span class="look"><%= item.etn %></span>
+    </div>
+  </li>
+<% }); %></ol>
+</script>
+
+</body>
+</html>

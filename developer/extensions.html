@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Designer documentation - Extensions</title>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li>
+				<a href="../installation.html">Installation</a>
+			</li>
+			<li>
+				<a href="../developer">Developer</a>
+				<ul>
+					<li>
+						<a href="../developer/extensions.html">Extensions</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="../designer">Designer</a>
+				<ul>
+					<li>
+						<a href="../designer/templates.html">Templates</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	
+	<div role="document-body">
+  <div id="example-common-js">
+    <h4>ExampleModule.js</h4>
+    <div>This file is a common javascript file (used on both, server and client)</div>
+		<pre>
+(function(menu){
+  
+  var onServer   = typeof exports != 'undefined',
+      common     = {},
+      settings   = {},
+      defaults   = {},
+      _          = onServer ? require('underscore')._ : window._,
+      $
+  ;
+  
+  
+  
+  
+  common.extensionName = 'menu';
+  
+  
+  
+  
+  /**
+   * Implements expender hook
+   */
+  common.extender = function() {
+    // this function is overridden on server side, its safe to use the window
+    var K = this;
+    $ = K.$;
+    console.info(' MENU --- ---- Menu ----- is extending Kern');
+    
+    K.bind('menu:initialized', function(){
+      console.info(' MENU --- The menu module has been initialized, client side');
+      console.info(' MENU --- $ is '+ typeof $);
+    });
+    
+    _.extend(settings, K.settings.menu || (K.settings.menu = {}));
+
+    K.bind('menu:loaded', function(){
+      common.initialize.call(K);
+    });
+  };
+  
+  
+  /**
+   * Implements initialize hook
+   */
+  common.initialize = function() {
+    var K = this;
+    console.info(' MENU --- ---- Menu ----- is initializing Kern', onServer);
+    
+    K.trigger('menu:initialized');
+    
+    $('[role=page-navigation]').text('Menu comes here');
+    
+  };
+  
+  
+  
+  _.extend(
+    menu,
+    common, 
+    onServer ? require('./menu.server.js') : {}
+  );
+})(typeof exports == 'undefined' ? this.menu = {} : exports);
+		</pre>
+  </div>
+
+  <div id="example-server-js">
+    <h4>ExampleModule.server.js</h4>
+    <div>This file overrides some methods, properties from the common script on the server side.</div>
+		<pre>
+menu = exports;
+var _ = require('underscore')._;
+
+/**
+ * Implements extender hook, server side
+ */
+menu.extender = function() {
+  var K = this;
+  K.bind('menu:initialized', function(){
+    console.info(' MENU --- The menu module has been initialized, server side');
+  });
+  
+  
+  console.info(' MENU --- Adding the client script for the menu to the assets');
+  // Add the client side script to the assets,
+  // it will be included in the html output
+  K.assets.scripts['/kern.menu.js'] = {
+    filepath: __dirname +'/menu.js',
+  };
+  
+};
+		</pre>
+  </div>
+
+  <div id="example-templates">
+    <h4>templates.html</h4>
+    <div>This particular file will contains all the templates the extension may need.</div>
+    <pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;title&gt;Insert title here&lt;/title&gt;
+    
+
+
+    &lt;script src=&quot;../../public/js/lib/jquery-1.6.4.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+      (function($){
+        $(document).ready(function(){
+          $('script.kern-template').each(function() {
+            var $t = $(this);
+            var $new = $('&lt;div class=&quot;kern-template-wrapper&quot;&gt;&lt;div class=&quot;'+ $t.attr('class') +'&quot; id=&quot;'+ $t.attr('id') +'-rendered&quot; /&gt;&lt;/div&gt;');
+            $new.children('.kern-template').html($t.html());
+            $t.before($new);
+          });
+        });
+      })(jQuery);
+    &lt;/script&gt;
+
+
+
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+
+
+
+
+
+
+&lt;!--
+Content entry templates
+--&gt;
+
+
+&lt;script type=&quot;text/template&quot; class=&quot;kern-template&quot; id=&quot;form-button-template&quot;&gt;
+&lt;button class=&quot;form-button &lt;%= wrapperCssClass %&gt;&quot;&gt;
+  &lt;span class=&quot;label&quot;&gt;&lt;%= value %&gt;&lt;/span&gt;
+  &lt;% if (icon) { %&gt;
+  &lt;span class=&quot;icon &lt;%= icon %&gt; &lt;%= cssClass %&gt;&quot;&gt;&lt;!--  --&gt;&lt;/span&gt;
+  &lt;% } %&gt;
+&lt;/button&gt;
+&lt;/script&gt;
+
+    
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+  </div>
+
+	</div>
+</body>
+</html>
