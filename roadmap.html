@@ -102,10 +102,21 @@
   
   <li>
     <h4>General look and feel</h4>
+    <div class="description">
+      Improve the CSS, make general improvements in design.
+    </div>
     <div class="meta">
       Estimated time needed: <span class="etn">5h</span><br />
       Status: <span class="status">open</span><br />
       Look at: <span class="look">lib/</span>
+    </div>
+  </li>
+  
+  <li>
+    <h4>Documentation</h4>
+    <div class="meta">
+      Estimated time needed: <span class="etn">12h</span><br />
+      Status: <span class="status">open</span><br />
     </div>
   </li>
   
@@ -131,8 +142,10 @@
     </div>
     <div class="meta">
       Estimated time needed: <span class="etn"><%= item.etn %></span><% if (item.dependenciesEtn) { %> <span class="dependencies-etn"><%= item.dependenciesEtn %></span><% } %><br />
-      Status: <span class="status"><%= item.status %></span><br />
-      Look at: <span class="look"><%= item.etn %></span>
+      Status: <span class="status"><%= item.status %></span>
+      <% if (item.look) { %><br />Look at: <span class="look"><% _.each(item.look, function(path) { %>
+        <a href="#-<%= path %>"><%= path %></a>
+      <% }); %></span><% } %>
     </div>
   </li>
 <% }); %></ol>
