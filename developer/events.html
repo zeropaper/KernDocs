@@ -7,19 +7,84 @@
 <body>
 
 
+
 <section>
   <header>
     <h3>Kern common events</h3>
     <div>Aimed to be used on server and client sides.</div>
   </header>
-
 	<ul>
-    <li>extended</li>
-    <li>initialized</li>
-    <li>&lt;extensionName&gt;initialized</li>
-    <li>registerpath</li>
+    <li>
+      <h4>extended</h4>
+    </li>
+    <li>
+      <h4>initialized</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">kern</span> (<span class="type">Kern</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>&lt;extensionName&gt;initialized</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">extension</span> (<span class="type">extension</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>contentchange</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">contentEntry</span> (<span class="type">contentEntry</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>contentprepare</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">contentEntry</span> (<span class="type">contentEntry</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>newcontent</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">contentEntry</span> (<span class="type">contentEntry</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>registerpath</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">contentEntry</span> (<span class="type">contentEntry</span>)
+        </div>
+      </div>
+    </li>
+    <li>
+      <h4>fileapplied</h4>
+      <div class="arguments">
+        <h5>Arguments</h5>
+        <div>
+          <span class="name">file</span> (<span class="type">contentEntry</span>)
+        </div>
+        <div>
+          <span class="name">isCurrentFile</span> (<span class="type">boolean</span>):
+          <span class="description"><code>K.currentFile.id == file.id</code></span>
+        </div>
+      </div>
+    </li>
 	</ul>
-
 </section>
 
 
@@ -30,7 +95,9 @@
   </header>
 
   <ul>
-    <li>domchange</li>
+    <li>
+      <h4>domchange</h4>
+    </li>
   </ul>
 
 </section>
@@ -43,7 +110,9 @@
   </header>
 
   <ul>
-    <li>initialized</li>
+    <li>
+      <h4>initialized</h4>
+    </li>
   </ul>
 
 </section>

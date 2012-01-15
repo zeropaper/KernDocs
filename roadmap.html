@@ -2,18 +2,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Kern.js documentation | Roadmap</title>
+<title>Roadmap</title>
 </head>
-<body>
 
+<body>
+<div role="document-body">
 <ol class="roadmap-list">
   <li>
     <h4>Socket refresh</h4>
     <div>
       <strong>Dependencies</strong>
-	    <div class="dependencies">
-	      Content Socket Refresh, Assets Socket Refresh
-	    </div>
+      <div class="dependencies">
+        Content Socket Refresh, Assets Socket Refresh
+      </div>
+    </div>
+    <div class="description">
+      Most of the code related to socket refresh was commented. It should be uncommented.
+      Part of the code should be complemented and improved.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">3h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">lib/socket/</span>
+    </div>
+  </li>
+  <li>
+    <h4>Socket refresh</h4>
+    <div>
+      <strong>Dependencies</strong>
+      <div class="dependencies">
+        Content Socket Refresh, Assets Socket Refresh
+      </div>
     </div>
     <div class="description">
       Most of the code related to socket refresh was commented. It should be uncommented.
@@ -38,6 +57,7 @@
       Most of the code related to socket refresh was commented. It should be uncommented.
       Part of the code should be complemented and improved.
     </div>
+    
     <div class="meta">
       Estimated time needed: <span class="etn">3h</span><br />
       Status: <span class="status">open</span><br />
@@ -114,17 +134,41 @@
   
   <li>
     <h4>Documentation</h4>
+    <div>
+      <strong>Dependencies</strong>
+      <div class="dependencies">
+        Rewrite
+      </div>
+    </div>
     <div class="meta">
       Estimated time needed: <span class="etn">12h</span><br />
       Status: <span class="status">open</span><br />
     </div>
   </li>
   
+  <li>
+    <h4>Rewrite</h4>
+    <div>
+      <strong>Dependencies</strong>
+      <div class="dependencies">
+        General look and feel, Queue, Logging, Watcher
+      </div>
+    </div>
+    <div class="description">
+      The code as it is at the moment is a draft and needs to be almost completely rewritten for clarity.
+    </div>
+    <div class="meta">
+      Estimated time needed: <span class="etn">24h</span><br />
+      Status: <span class="status">open</span><br />
+      Look at: <span class="look">*</span>
+    </div>
+  </li>
+  
 </ol>
+</div>
 
-
-<script type="text/javascript" class="kern-script" id="kern-roadmap">
-
+<script type="text/kern-javascript" class="kern-script" id="kern-roadmap">
+alert('Hello docs');
 </script>
 
 <script type="text/template" class="kern-template" id="kern-roadmap-list-template">
